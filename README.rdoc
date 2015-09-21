@@ -1,8 +1,8 @@
-== README
-<h1>Todo</h1>
+== TODO
+ 
 This is the application where a user comes after authentication and can perform the CRUD operation for the product and also can share their product with other registered user as well. In particular, as a first debugging check I suggest getting the test suite to pass on your local machine:
 
-**Getting Started**
+== *Getting Started*
 
 1. git clone https://github.com/chitrarani05/todo_app.git
 
