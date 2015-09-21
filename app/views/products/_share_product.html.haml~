@@ -1,0 +1,13 @@
+.popup_dialog_div.share_product_box{title: "Share Product", id: 'share_product_' + share_product.id.to_s}
+  #share_div
+    .btn-group
+      %table.form-table{style: "margin-bottom:0px !important; "}
+        %tr{style: "float: left; margin-top: 20px;"}
+          %th= label_tag "Register Users"
+          %td 
+            &nbsp; &nbsp;
+            = select_tag "users", options_for_select(user_list), prompt: "Please Select the User", style: "width: 240px;"
+        %tr{style: "margin-top: 18px; float: left;"}
+          %td
+            %br
+            = submit_tag "Ok", class: 'btn btn-primary'  

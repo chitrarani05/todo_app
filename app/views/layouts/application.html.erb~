@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TodoApp1</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li><%= link_to "Home", root_path, class: "btn"%></li>
+        <li><%= link_to "About Us", root_path %></li>
+        <li><%= link_to "Contact", root_path %></li>
+        <% if user_signed_in? %>
+          <li style="float: right;"><%= link_to "Sign Out", destroy_user_session_path, method: :DELETE %></li>
+        <% else %>
+          <li style="float: right;"><%= link_to "Sign up", new_user_registration_path %></li>
+          <li style="float: right;"><%= link_to "Sign In", new_user_session_path %></li>
+        <% end %>
+      </ul>
+      <br>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

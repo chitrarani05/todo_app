@@ -1,0 +1,36 @@
+<% if @products.present? %>
+  <div class="box1">
+    <h1>Products Listing</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th class="col-xs-1">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td style="width: 19%;">
+              <%= link_to 'Show', product, title: 'click to show the product' %> &nbsp;&nbsp;&nbsp;
+              <%= link_to 'Edit', edit_product_path(product), title: 'click to edit the product' %>&nbsp;&nbsp;&nbsp; 
+              <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, title: 'click to delete the product' %>&nbsp;&nbsp;&nbsp;
+              <%= link_to 'Share', "#", onclick: "show_popup_dialog_div(\"share_product_#{product.id}\", 520); return false;", id: "link_share_product_#{product.id}", :title => "This feature will share the product with registered users." %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  </div>  
+<%= render partial: 'products/share_product', :collection => @products %>  
+<% else %>
+  <h3> No Product created yet.</h3>
+<% end %>   
+<%= link_to 'New Product', new_product_path, class: 'btn btn-primary', title: 'click to create a new product' %>
+
+
+

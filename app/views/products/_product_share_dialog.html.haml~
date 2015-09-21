@@ -1,0 +1,1 @@
+.popup_dialog_div.clone_spirit_store_box{title: "Share Product", id: 'share_product_' + product_id.to_s}
