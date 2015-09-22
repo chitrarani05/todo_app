@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   ## Associations
   ################        
   has_many :products
+  has_and_belongs_to_many :products
   
   ###############
   ## Validations

@@ -60,6 +60,28 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def check_product_shared_or_not
+    hash = {}
+    user = User.where(id: params[:user_id]).first
+    #existing_clubs = Club.where( name: params[:name], parent_id: @club.parent_id).all
+    if user.products.present?
+      hash[:already_shared] = "already_shared"
+      render json: hash
+    else
+      hash[:share] = "can_share"
+      render json: hash
+    end
+    #redirect_to request.referer
+  end
+  
+  def share_product
+    #save records in third table
+    user = User.where(id: params[:user_id]).first
+    product = Product.where(id: params[:product_id]).first
+    user.products << product
+    redirect_to request.referer
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

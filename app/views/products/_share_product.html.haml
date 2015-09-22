@@ -1,13 +1,17 @@
 .popup_dialog_div.share_product_box{title: "Share Product", id: 'share_product_' + share_product.id.to_s}
   #share_div
     .btn-group
-      %table.form-table{style: "margin-bottom:0px !important; "}
-        %tr{style: "float: left; margin-top: 20px;"}
-          %th= label_tag "Register Users"
-          %td 
-            &nbsp; &nbsp;
-            = select_tag "users", options_for_select(user_list), prompt: "Please Select the User", style: "width: 240px;"
-        %tr{style: "margin-top: -5px; float: left;"}
-          %td
-            %br
-            = submit_tag "Ok", class: 'btn btn-primary'  
+      = form_tag check_product_shared_or_not_product_path(share_product.id), id: "share_form_#{share_product.id}" do
+        %table.form-table{style: "margin-bottom:0px !important; "}
+          %tr{style: "float: left; margin-top: 20px;"}
+            %th= label_tag "Register Users"
+            %td 
+              &nbsp; &nbsp;
+              = select_tag "user_id", options_for_select(user_list), prompt: "Please Select the User", style: "width: 240px;", required: 'true'
+          %tr{style: "margin-top: -5px; float: left;"}
+            %td
+              %br
+              = submit_tag "Ok", class: 'btn btn-primary', onclick: "check_product_already_shared_or_not('#{share_product.id}');" 
+          %tr{style: "display: none", id: "error_div"}
+            %td{style:"color: red;"}
+              = "Product: #{share_product.name} has been already shared with selected user"    

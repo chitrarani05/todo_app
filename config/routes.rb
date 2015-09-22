@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, :path_names => { :sign_up => "register", :sign_in => "login"}
-  resources :products
+  resources :products do 
+    member do
+       get :share_product
+       post :check_product_shared_or_not   
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
