@@ -23,6 +23,7 @@ $(document).ready(function(){
     , maxHeight: 600
     , position: { my: "center top+75", at: "center top", of: window }
   });
+  $(".ui-dialog-titlebar-close").text("x")
 });  
 
 function show_popup_dialog_div(div_id, width){
