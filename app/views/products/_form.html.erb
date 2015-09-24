@@ -9,13 +9,14 @@
   <br>
   <div>
     <%= f.label :description %> 
-    <%= f.text_area :description, class: "form-control", placeholder: 'Enter the product name', required: 'true', style: 'width: 50%;' %>
+    <%= f.text_area :description, class: "form-control", placeholder: 'Enter the product description', required: 'true', style: 'width: 50%;' %>
     <% if @product.errors.present? and @product.errors.messages[:description].present? %>
       <div style="color:red;"><%= @product.errors.messages[:description].join %></div>
     <% end %>
   </div>
   </br>
   <div>
-    <%= f.submit class: "btn btn-primary" %>
+    <%= f.submit class: "btn btn-primary" %> &nbsp;&nbsp;&nbsp;
+    <%= link_to 'Back', products_path, class: 'btn btn-primary' %>
   </div>
 <% end %>

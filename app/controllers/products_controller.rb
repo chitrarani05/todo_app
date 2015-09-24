@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.where(user_id: current_user.id)
   end
 
   # GET /products/1
@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to products_path, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -64,8 +64,8 @@ class ProductsController < ApplicationController
   def check_product_shared_or_not
     hash = {}
     user = User.where(id: params[:user_id]).first
-    #existing_clubs = Club.where( name: params[:name], parent_id: @club.parent_id).all
-    if user.products.present?
+    hash["#{user.id}"] = "user_id"
+    if user.products.collect {|x| x.id }.include? params[:id].to_i
       hash[:already_shared] = "already_shared"
       render json: hash
     else
@@ -78,8 +78,9 @@ class ProductsController < ApplicationController
   def share_product
     #save records in third table
     user = User.where(id: params[:user_id]).first
-    product = Product.where(id: params[:product_id]).first
+    product = Product.where(id: params[:id]).first
     user.products << product
+    flash[:notice] = "Product has been shared with #{user.username}."
     redirect_to request.referer
   end
 

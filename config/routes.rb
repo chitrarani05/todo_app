@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :products do 
     member do
        get :share_product
-       post :check_product_shared_or_not   
+       post :check_product_shared_or_not 
     end
   end
 

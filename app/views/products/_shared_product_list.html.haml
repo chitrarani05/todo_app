@@ -1,0 +1,21 @@
+.popup_dialog_div.shared_product_box{title: "Share Product", id: 'shared_product'}
+  #share_div
+    %table{class: "table table-striped"}
+      %thead 
+        %tr
+          %th 
+            = "Name" 
+          %th
+            = "Description"
+          %th
+            = "Product Owner"   
+      %tbody 
+        - @shared_products.each do |shared_product| 
+          %tr
+            %td 
+              = shared_product.name  
+            %td
+              = shared_product.description  
+            %td
+              = get_owner(shared_product)
+         

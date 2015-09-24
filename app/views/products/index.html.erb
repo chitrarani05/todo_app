@@ -1,9 +1,8 @@
 <% if @products.present? %>
   <div class="box1">
-    <h1>Products Listing</h1>
     <table class="table table-striped">
       <thead>
-        <tr>
+        <tr style= "background-color: #e2e7ff">
           <th>Name</th>
           <th>Description</th>
           <th class="col-xs-1">Action</th>
@@ -18,7 +17,7 @@
               <%= link_to 'Show', product, title: 'click to show the product' %> &nbsp;&nbsp;&nbsp;
               <%= link_to 'Edit', edit_product_path(product), title: 'click to edit the product' %>&nbsp;&nbsp;&nbsp; 
               <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, title: 'click to delete the product' %>&nbsp;&nbsp;&nbsp;
-              <%= link_to 'Share', "#", onclick: "show_popup_dialog_div(\"share_product_#{product.id}\", 520); return false;", id: "link_share_product_#{product.id}", :title => "This feature will share the product with registered users." %>
+              <%= link_to 'Share', "#", onclick: "show_popup_dialog_div(\"share_product_#{product.id}\", 520); return false;", id: "link_share_product_#{product.id}", :title => "Click to share the product with other registered users." %>
             </td>
           </tr>
         <% end %>

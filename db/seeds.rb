@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-Product.create!(name: 'Ruby', description: 'Ruby is a dynamic, open source programming language with a focus on simplicity & productivity.')
-Product.create!(name: 'Rails', description: 'Rails is an open-source web framwork that optimized for programmer happiness and sustainable productivity.')
-Product.create!(name: 'C Language', description: 'C is a general-purpose high level language that was originally developed by Dennis Ritchie for the Unix operating system')
-Product.create!(name: 'PHP', description: 'PHP is an acronym for "PHP: Hypertext Preprocessor')
+User.create!(username: 'admin', email: 'admin@admin.com', password: 'monkey', password_confirmation: 'monkey');
+Product.create!(name: 'Ruby', description: 'Ruby is a dynamic, open source programming language with a focus on simplicity & productivity.', user_id: 1)
+Product.create!(name: 'Rails', description: 'Rails is an open-source web framwork that optimized for programmer happiness and sustainable productivity.', user_id: 1)
+Product.create!(name: 'C Language', description: 'C is a general-purpose high level language that was originally developed by Dennis Ritchie for the Unix operating system', user_id: 1)
+Product.create!(name: 'PHP', description: 'PHP is an acronym for "PHP: Hypertext Preprocessor', user_id: 1)

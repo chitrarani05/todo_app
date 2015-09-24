@@ -12,8 +12,12 @@
         <li><%= link_to "Home", root_path, class: "btn"%></li>
         <li><%= link_to "About Us", root_path %></li>
         <li><%= link_to "Contact", root_path %></li>
+        <% if current_user %>
+          <li><%= link_to "Shared Product list", "#", onclick: "dialog_div_for_shared_products(\"shared_product\", 520); return false;", id: "link_shared_product", :title => "Click to view the product list which was shared with other users to current user." %></li>
+        <% end %>  
         <% if user_signed_in? %>
           <li style="float: right;"><%= link_to "Sign Out", destroy_user_session_path, method: :DELETE %></li>
+          <li style="float: right; margin-top: 12px;"><%= "Signed in as #{current_user.username}." %> </li>
         <% else %>
           <li style="float: right;"><%= link_to "Sign up", new_user_registration_path %></li>
           <li style="float: right;"><%= link_to "Sign In", new_user_session_path %></li>
@@ -21,12 +25,16 @@
       </ul>
       <br>
       <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
+        <p style="text-align: center; font-size: 17px;" class="alert alert-success"><%= notice %></p>
       <% end %>
       <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
+        <p style="text-align: center; font-size: 17px;" class="alert alert-danger"><%= alert %></p>
       <% end %>
+      <% if current_user %>
+        <%= render 'products/shared_product_list' %>
+      <% end %>  
       <%= yield %>
+       
     </div>
   </body>
 </html>

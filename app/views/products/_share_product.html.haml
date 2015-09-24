@@ -8,10 +8,10 @@
             %td 
               &nbsp; &nbsp;
               = select_tag "user_id", options_for_select(user_list), prompt: "Please Select the User", style: "width: 240px;", required: 'true'
-          %tr{style: "margin-top: -5px; float: left;"}
+          %tr{style: "margin-top: -5px; float: left; margin-left:40px;"}
             %td
               %br
               = submit_tag "Ok", class: 'btn btn-primary', onclick: "check_product_already_shared_or_not('#{share_product.id}');" 
-          %tr{style: "display: none", id: "error_div"}
+          %tr{style: "display: none", id: "error_div_#{share_product.id}"}
             %td{style:"color: red;"}
-              = "Product: #{share_product.name} has been already shared with selected user"    
+              = "Product: #{share_product.name} has been already shared with selected user. Please select the other one"    
