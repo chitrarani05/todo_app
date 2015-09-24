@@ -23,12 +23,12 @@
         <% end %>
       </tbody>
     </table>
-    <br>
   </div>  
 <%= render partial: 'products/share_product', :collection => @products %>  
 <% else %>
   <h3> No Product created yet.</h3>
-<% end %>   
+<% end %>
+<br>   
 <%= link_to 'New Product', new_product_path, class: 'btn btn-primary', title: 'click to create a new product' %>
 
 
