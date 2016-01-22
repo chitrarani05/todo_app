@@ -1,8 +1,0 @@
-module ProductsHelper
-  def user_list
-    debugger
-    if true
-    return User.all.collect {|x| [x.username, x.id] }
-    end
-  end
-end
